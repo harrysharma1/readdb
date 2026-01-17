@@ -13,7 +13,10 @@ func RegisterBooksHandler(e *echo.Echo) {
 
 func handleBooks(ctx echo.Context) error {
 	resMock := models.Book{
-		BookIDs:        []models.BookID{{Type: "isbn10", Value: "0141439475"}},
+		BookIDs: []models.BookID{
+			{Type: "isbn10", Value: "0141439475"},
+			{Type: "isbn13", Value: "978-0141439471"},
+		},
 		Name:           "Frankenstein",
 		Editions:       []models.Edition{{Name: "Revised Edition", Number: 3, ProfileImage: "https://m.media-amazon.com/images/I/715sAi1-d5L._SY522_.jpg"}},
 		ShortBlurb:     `Mary Shelley's chilling Gothic tale was conceived when she was only eighteen, living with her lover Percy Shelley on Lake Geneva. The story of Victor Frankenstein who, obsessed with creating life itself, plunders graveyards for the material to fashion a new being, but whose botched creature sets out to destroy his maker, would become the world's most famous work of horror fiction, and remains a devastating exploration of the limits of human creativity.`,
