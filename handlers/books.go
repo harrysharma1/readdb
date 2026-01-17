@@ -7,10 +7,6 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func RegisterBooksHandler(e *echo.Echo) {
-	e.GET("/books", handleBooks)
-}
-
 func handleBooks(ctx echo.Context) error {
 	resMock := models.Book{
 		BookIDs: []models.BookID{
@@ -29,8 +25,8 @@ func handleBooks(ctx echo.Context) error {
 			{Name: "Maurice Hindle", Type: "Editor", ProfileImage: "https://pbs.twimg.com/profile_images/520897946389209088/TL1DsUUD_400x400.jpeg", ShortBio: "", AlternateNames: []models.AlternateName{}},
 		},
 		ReadingLogs: []models.ReadingLog{
-			{Date: time.Now(), Message: "Started Reading", CurrentPage: 1, Finished: false},
-			{Date: time.Now().Add(time.Hour * 72), Message: "Finished", CurrentPage: 352, Finished: true},
+			{LogDate: time.Now(), Message: "Started Reading", CurrentPage: 1, Finished: false},
+			{LogDate: time.Now().Add(time.Hour * 72), Message: "Finished", CurrentPage: 352, Finished: true},
 		},
 	}
 	return ctx.JSON(200, resMock)

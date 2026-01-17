@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
+
 	e := echo.New()
 	e.GET("/", func(ctx echo.Context) error {
 		return ctx.JSON(200, map[string]string{"message": "/"})
 	})
-	handlers.RegisterBooksHandler(e)
+	handlers.RegisterHandlers(e)
 	e.Logger.Fatal(e.Start(":6969"))
 }
