@@ -15,6 +15,7 @@ func main() {
 	}
 	defer db.Close()
 	database.SeedAuthor(db)
+	database.SeedBook(db)
 	e := echo.New()
 	e.GET("/", func(ctx echo.Context) error {
 		return ctx.JSON(200, map[string]string{"message": "/"})
