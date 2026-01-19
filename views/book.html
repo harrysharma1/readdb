@@ -1,0 +1,30 @@
+{{ define "book" }}
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+   {{ template "head" .}}
+   <body>
+      <div class="flex flex-col gap-2">
+         {{ template "navbar" . }}
+         <div class="p-4">
+            <div class="card lg:card-side bg-base-100 shadow-sm">
+               <figure>
+                  <img
+                     src="{{ .Book.ProfileImage }}"
+                     alt="Album" />
+               </figure>
+               <div class="card-body">
+                  <h2 class="card-title">{{ .Book.Name }}</h2>
+                  <p>{{ .Book.ShortBlurb }}</p>
+                  {{ range .Book.Authors }}
+                    <a href="/authors/{{ .ID }}">{{ .Name }} <em>({{ .Type}})</em></a>
+                  {{ end }}
+                  <div class="card-actions justify-end">
+                     <button class="btn btn-primary">Listen</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
+{{ end }}

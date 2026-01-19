@@ -116,3 +116,17 @@ func GetAllBooks(db *bolt.DB) ([]models.Book, error) {
 	})
 	return books, err
 }
+
+func GetBookById(db *bolt.DB, id uint) (models.Book, error) {
+	var book models.Book
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("books"))
+		if b == nil {
+			return errors.New("books does not exist")
+		}
+
+		json.Unmarshal(b.Get(itob(id)), &book)
+		return nil
+	})
+	return book, err
+}

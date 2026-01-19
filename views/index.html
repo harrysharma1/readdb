@@ -1,8 +1,33 @@
 {{ define "index" }}
 <!DOCTYPE html>
 <html lang="en" data-theme="retro">
-    {{ template "head" .}}
-    <body>
-    </body>
+   {{ template "head" .}}
+   <body>
+      <div class="flex flex-col gap-2">
+         {{ template "navbar" . }}
+         <div class="p-4">
+            {{ if .Books }}
+            {{ range .Books }}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="card bg-base-100 image-full w-full md:w-64 shadow-sm">
+                <figure>
+                    <img
+                    src="{{ .ProfileImage}}"
+                    alt="{{ .Name }} Cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{{ .Name }}</h2>
+                    <p>{{ truncate .ShortBlurb 50 }}</p>
+                    <div class="card-actions justify-end">
+                    <a href="/books/{{ .ID }}" class="btn btn-primary">Go To</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ end }}    
+         </div>
+      </div>
+   </body>
 </html>
 {{ end }}

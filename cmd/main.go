@@ -5,6 +5,8 @@ import (
 	"log"
 	"readdb/database"
 	"readdb/handlers"
+	"readdb/helper"
+	"strings"
 	"text/template"
 
 	"github.com/labstack/echo/v4"
@@ -29,11 +31,19 @@ func main() {
 	database.SeedList(db)
 	// Router
 	e := echo.New()
+	handlers.RegisterHandlers(e, db)
+	// Template
+	e.Static("/static", "static")
+	funcMap := template.FuncMap{
+		"toUpper":  strings.ToUpper,
+		"contains": strings.Contains,
+		"replace":  strings.Replace,
+		"truncate": helper.Truncate,
+	}
 	renderer := &Template{
-		templates: template.Must(template.ParseGlob("views/*.html")),
+		templates: template.Must(template.New("t").Funcs(funcMap).ParseGlob("views/*.html")),
 	}
 	e.Renderer = renderer
-	e.Static("/static", "static")
-	handlers.RegisterHandlers(e, db)
+	e.Debug = true
 	e.Logger.Fatal(e.Start(":6969"))
 }
