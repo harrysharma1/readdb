@@ -18,6 +18,7 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 func main() {
+	// DB
 	db, err := database.InitDB()
 	if err != nil {
 		log.Fatal(err)
@@ -26,11 +27,13 @@ func main() {
 	database.SeedAuthor(db)
 	database.SeedBook(db)
 	database.SeedList(db)
+	// Router
 	e := echo.New()
 	renderer := &Template{
 		templates: template.Must(template.ParseGlob("views/*.html")),
 	}
 	e.Renderer = renderer
+	e.Static("/static", "static")
 	handlers.RegisterHandlers(e, db)
 	e.Logger.Fatal(e.Start(":6969"))
 }
