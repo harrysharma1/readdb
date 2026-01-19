@@ -4,7 +4,6 @@ type Book struct {
 	ID              uint             `json:"id"`
 	BookIdentifiers []BookIdentifier `json:"bookIdentifiers"`
 	Name            string           `json:"name"`
-	Editions        []Edition        `json:"editions"`
 	ShortBlurb      string           `json:"shortBlurb"`
 	Rating          int8             `json:"rating"`
 	ProfileImage    string           `json:"profileImage"`
@@ -16,4 +15,10 @@ type Book struct {
 type BookIdentifier struct {
 	Type  string `json:"type"`
 	Value string `json:"value"`
+}
+
+type Series struct {
+	PartOfASeries      bool   `json:"partOfASeries"`
+	VolumeNumber       int    `json:"volumeNumber"`
+	OtherBooksInSeries []Book `json:"otherBooksInSeries"`
 }

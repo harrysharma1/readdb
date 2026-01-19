@@ -35,13 +35,6 @@ func SeedBook(db *bolt.DB) {
 			},
 		},
 		Name: "Frankenstein",
-		Editions: []models.Edition{
-			{
-				Name:         "Frankenstein: Or Modern Prometheus",
-				Number:       3,
-				ProfileImage: "https://m.media-amazon.com/images/I/81RllwIMzQL._SY522_.jpg",
-			},
-		},
 		ShortBlurb: `Mary Shelley's classic novel, Frankenstein; or The Modern Prometheus, is a story about a young scientist Victor Frankenstein and his grotesque sapient creation through unorthodox science.
 Odin's Library Classics is dedicated to bringing the world the best of humankind's literature from throughout the ages. Carefully selected, each work is unabridged from classic works of fiction, nonfiction, poetry, or drama.`,
 		Rating:         4,
