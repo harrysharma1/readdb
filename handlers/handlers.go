@@ -12,8 +12,10 @@ func RegisterHandlers(e *echo.Echo, db *bolt.DB) {
 	e.GET("/books", GetBooksHandler(db))
 	// Authors
 	e.GET("/authors", GetAuthorsHandler(db))
+	//Lists
+	e.GET("/lists", GetListsHandler(db))
 }
 
 func handleRoot(ctx echo.Context) error {
-	return ctx.JSON(200, map[string]string{"message": "/"})
+	return ctx.Render(200, "index", "")
 }

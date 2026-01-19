@@ -15,6 +15,9 @@ func GetBooksHandler(db *bolt.DB) echo.HandlerFunc {
 				"error": err.Error(),
 			})
 		}
-		return ctx.JSON(200, books)
+		if len(books) > 0 {
+			return ctx.JSON(200, books)
+		}
+		return ctx.JSON(200, "")
 	}
 }

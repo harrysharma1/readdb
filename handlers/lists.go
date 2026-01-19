@@ -7,16 +7,16 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-func GetAuthorsHandler(db *bolt.DB) echo.HandlerFunc {
+func GetListsHandler(db *bolt.DB) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
-		authors, err := database.GetAllAuthors(db)
+		lists, err := database.GetAllLists(db)
 		if err != nil {
 			return ctx.JSON(500, map[string]string{
-				"error": err.Error(),
+				"errors": err.Error(),
 			})
 		}
-		if len(authors) > 0 {
-			return ctx.JSON(200, authors)
+		if len(lists) > 0 {
+			return ctx.JSON(200, lists)
 		}
 		return ctx.JSON(200, "")
 	}
