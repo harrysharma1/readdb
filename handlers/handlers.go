@@ -9,17 +9,18 @@ import (
 
 func RegisterHandlers(e *echo.Echo, db *bolt.DB) {
 	// Root
-	e.GET("/", handleRoot(db))
+	e.GET("/", RootHandler(db))
 	// Books
 	e.GET("/books", GetBooksHandler(db))
 	e.GET("/books/:id", GetBookByIdHandler(db))
 	// Authors
 	e.GET("/authors", GetAuthorsHandler(db))
+	e.GET("/authors/:id", GetAuthorByIdHandler(db))
 	//Lists
 	e.GET("/lists", GetListsHandler(db))
 }
 
-func handleRoot(db *bolt.DB) echo.HandlerFunc {
+func RootHandler(db *bolt.DB) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
 		books, err := database.GetAllBooks(db)
 		if err != nil {

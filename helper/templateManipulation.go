@@ -1,6 +1,8 @@
 package helper
 
-import "strings"
+import (
+	"strings"
+)
 
 func Truncate(s string, limit int) string {
 	var sb strings.Builder

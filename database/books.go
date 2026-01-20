@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"readdb/models"
+	"slices"
 	"time"
 
 	bolt "go.etcd.io/bbolt"
@@ -122,4 +123,33 @@ func GetBookById(db *bolt.DB, id uint) (models.Book, error) {
 		return nil
 	})
 	return book, err
+}
+
+func GetAllBooksByAuthorID(db *bolt.DB, authorId uint) ([]models.Book, error) {
+	var books []models.Book
+
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("books"))
+		if b == nil {
+			return errors.New("books does not exist")
+		}
+
+		return b.ForEach(func(k, v []byte) error {
+			var book models.Book
+			if err := json.Unmarshal(v, &book); err != nil {
+				return err
+			}
+			books = append(books, book)
+			return nil
+		})
+	})
+	books = slices.DeleteFunc(books, func(b models.Book) bool {
+		for _, author := range b.Authors {
+			if author.ID == authorId {
+				return false
+			}
+		}
+		return true
+	})
+	return books, err
 }

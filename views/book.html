@@ -16,10 +16,10 @@
                   <h2 class="card-title">{{ .Book.Name }}</h2>
                   <p>{{ .Book.ShortBlurb }}</p>
                   {{ range .Book.Authors }}
-                    <a href="/authors/{{ .ID }}">{{ .Name }} <em>({{ .Type}})</em></a>
+                    <a href="/authors/{{ .ID }}" class="hover:link">{{ .Name }} <em>({{ .Type}})</em></a>
                   {{ end }}
                   <div class="card-actions justify-end">
-                     <button class="btn btn-primary">Listen</button>
+                     
                   </div>
                </div>
             </div>

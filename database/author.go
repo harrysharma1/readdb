@@ -68,3 +68,16 @@ func GetAllAuthors(db *bolt.DB) ([]models.Author, error) {
 	})
 	return authors, err
 }
+
+func GetAuthorById(db *bolt.DB, id uint) (models.Author, error) {
+	var author models.Author
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("authors"))
+		if b == nil {
+			return errors.New("authors does not exist")
+		}
+		json.Unmarshal(b.Get(itob(id)), &author)
+		return nil
+	})
+	return author, err
+}

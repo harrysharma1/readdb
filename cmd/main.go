@@ -36,6 +36,7 @@ func main() {
 	e.Static("/static", "static")
 	funcMap := template.FuncMap{
 		"toUpper":  strings.ToUpper,
+		"join":     strings.Join,
 		"contains": strings.Contains,
 		"replace":  strings.Replace,
 		"truncate": helper.Truncate,
