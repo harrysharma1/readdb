@@ -1,34 +1,56 @@
 {{ define "index" }}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="retro">
-   {{ template "head" .}}
-   <body>
-      <div class="flex flex-col gap-2">
-         {{ template "navbar" . }}
-         <div class="p-4">
+  {{ template "head" .}}
+  <body>
+    <div class="flex flex-col gap-2">
+      {{ template "navbar" . }}
+      <div class="p-4">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {{ range .Books }}
+          <div
+            class="card bg-base-100 image-full w-full sm:w-56 lg:w-64 shadow-sm">
+            <figure class="aspect-2/3">
+              <img
+                src="{{ .ProfileImage}}"
+                alt="{{ .Name }} Cover"
+                class="w-full h-full object-cover" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">{{ .Name }}</h2>
+              <p>{{ truncate .ShortBlurb 125 }}</p>
+              <div class="card-actions justify-end">
+                <div class="fab absolute bottom-4 right-4 z-20">
+                  <div
+                    tabindex="0"
+                    role="button"
+                    class="btn btn-lg btn-circle btn-outline btn-info">
+                    ☰
+                  </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {{ range .Books }}
-                <div class="card bg-base-100 image-full w-full sm:w-56 lg:w-64 shadow-sm">
-                <figure class="aspect-2/3">
-                    <img
-                    src="{{ .ProfileImage}}"
-                    alt="{{ .Name }} Cover"
-                    class="w-full h-full object-cover" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">{{ .Name }}</h2>
-                    <p>{{ truncate .ShortBlurb 125 }}</p>
-                    <div class="card-actions justify-end">
-                    <a href="/books/{{ .ID }}" class="btn btn-primary">Go To</a>
-                    </div>
+                  <div class="fab-close">
+                    Close <span class="btn btn-circle btn-lg btn-error">✕</span>
+                  </div>
+
+                  <!-- buttons that show up when FAB is open -->
+                  <div>
+                    Go To <a href="/books/{{ .ID }}" class="btn btn-lg btn-secondary btn-circle btn-outline">→</a>
+                  </div>
+                  <div>
+                    Edit Book Info <button class="btn btn-lg btn-warning btn-circle btn-outline">✎</button>
+                  </div>
+                  <div>
+                    Delete <button class="btn btn-lg btn-warning btn-circle btn-outline">🗑</button>
+                  </div>
                 </div>
+              </div>
             </div>
-            {{ end }}       
-
-                </div>
-         </div>
+          </div>
+          {{ end }}
+        </div>
       </div>
-   </body>
+    </div>
+  </body>
 </html>
 {{ end }}

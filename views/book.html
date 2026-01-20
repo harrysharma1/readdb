@@ -19,9 +19,33 @@
             <div class="flex flex-col">
               <h1><strong>{{ .Book.Name }}</strong></h1>
               <p>{{ .Book.ShortBlurb }}</p>
+              <ul class="list bg-base-100 rounded-box shadow-md">
+                <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">
+                  Creator(s)
+                </li>
+                {{ range .Book.Authors }}
+                <a href="/authors/{{ .ID }}">
+                  <li class="list-row">
+                    <div>
+                      <img
+                        class="size-10 rounded-box"
+                        src="{{ .ProfileImage }}"
+                        alt="{{ .Name }} Profile Image" />
+                    </div>
+                    <div>
+                      <div>{{ .Name }}</div>
+                      <div class="text-xs uppercase font-semibold opacity-60">
+                        <em>({{ .Type }})</em>
+                      </div>
+                    </div>
+                  </li>
+                </a>
+                {{ end }}
+              </ul>
             </div>
           </div>
         </div>
+        {{ .Book.ReadingLogs }}
       </div>
     </div>
   </body>
