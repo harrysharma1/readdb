@@ -10,7 +10,7 @@ import (
 )
 
 func SeedAuthor(db *bolt.DB) {
-	author := models.Author{
+	author1 := models.Author{
 		Name:         "Mary Shelley",
 		Type:         "Author",
 		ProfileImage: "https://cdn-test.poetryfoundation.org/cdn-cgi/image/w=2292,h=1500,q=80/content/images/f32d3878f890870597a16f89778191bfdc1ca678.jpeg",
@@ -21,7 +21,19 @@ func SeedAuthor(db *bolt.DB) {
 			},
 		},
 	}
-	err := SaveAuthor(db, author)
+
+	err := SaveAuthor(db, author1)
+	if err != nil {
+		log.Fatal(err)
+
+	}
+	author2 := models.Author{
+		Name:         "Eiichiro oda",
+		Type:         "Mangaka",
+		ProfileImage: "https://static.wikia.nocookie.net/onepiece/images/3/32/Eiichiro_Oda_Infobox.png",
+		ShortBio:     `Eiichiro Oda (Japanese: 尾田 栄一郎, Hepburn: Oda Eiichirō; born January 1, 1975) is a Japanese manga artist and the creator of the series One Piece, the best-selling manga in history and the best-selling comic series printed in volume. With more than 520 million tankōbon copies of One Piece in circulation worldwide, Oda is one of the best-selling fiction authors. The series' popularity resulted in Oda being named one of the artists who changed the history of manga.`,
+	}
+	err = SaveAuthor(db, author2)
 	if err != nil {
 		log.Fatal(err)
 

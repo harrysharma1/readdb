@@ -19,6 +19,7 @@ type BookIdentifier struct {
 
 type Series struct {
 	PartOfASeries      bool   `json:"partOfASeries"`
+	Name               string `json:"name"`
 	VolumeNumber       int    `json:"volumeNumber"`
 	OtherBooksInSeries []Book `json:"otherBooksInSeries"`
 }
