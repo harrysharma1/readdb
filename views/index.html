@@ -25,7 +25,7 @@
                   <div
                     tabindex="0"
                     role="button"
-                    class="btn btn-lg btn-circle btn-outline btn-info">
+                    class="btn btn-lg btn-circle btn-outline btn-accent">
                     ☰
                   </div>
 
@@ -35,13 +35,28 @@
 
                   <!-- buttons that show up when FAB is open -->
                   <div>
-                    Go To <a href="/books/{{ .ID }}" class="btn btn-lg btn-secondary btn-circle btn-outline">→</a>
+                    Go To
+                    <a
+                      href="/books/{{ .ID }}"
+                      class="btn btn-lg btn-secondary btn-circle btn-outline"
+                      ><span class="material-symbols-outlined">
+                        trending_flat
+                      </span></a
+                    >
                   </div>
                   <div>
-                    Edit Book Info <button class="btn btn-lg btn-warning btn-circle btn-outline">✎</button>
+                    Edit Book Info
+                    <button
+                      class="btn btn-lg btn-warning btn-circle btn-outline">
+                      <span class="material-symbols-outlined"> edit </span>
+                    </button>
                   </div>
                   <div>
-                    Delete <button class="btn btn-lg btn-warning btn-circle btn-outline">🗑</button>
+                    Delete
+                    <button
+                      class="btn btn-lg btn-warning btn-circle btn-outline">
+                      <span class="material-symbols-outlined"> delete </span>
+                    </button>
                   </div>
                 </div>
               </div>
