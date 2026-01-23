@@ -69,6 +69,16 @@ Odin's Library Classics is dedicated to bringing the world the best of humankind
 				Finished:    true,
 			},
 		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/frankenstein/mary-shelley/maurice-hindle/9780141439471",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://a.co/d/dIGeecB",
+			},
+		},
 	}
 	err := SaveBook(db, book1)
 	if err != nil {
@@ -110,6 +120,16 @@ Brimming with political intrigue, The Last Man broaches partisan dysfunction, im
 				Finished:    true,
 			},
 		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/the-last-man/mary-shelley/9780143137900",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://www.amazon.com/Last-Man-Mary-Shelley/dp/0143137905",
+			},
+		},
 	}
 	err = SaveBook(db, book2)
 	if err != nil {
@@ -145,6 +165,16 @@ Brimming with political intrigue, The Last Man broaches partisan dysfunction, im
 				Message:     "Peak",
 				CurrentPage: 208,
 				Finished:    true,
+			},
+		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/wanted-eiichiro-oda-before-one-piece/eiichiro-oda/9781974749928",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://amzn.eu/d/hOSskyZ",
 			},
 		},
 	}
@@ -185,6 +215,16 @@ As a child, Monkey D. Luffy was inspired to become a pirate by listening to the 
 				Finished:    true,
 			},
 		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/one-piece-vol-1/eiichiro-oda/9781569319017",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://www.amazon.com/One-Piece-Vol-Romance-Dawn/dp/1569319014",
+			},
+		},
 	}
 	err = SaveBook(db, book4)
 	if err != nil {
@@ -223,6 +263,16 @@ As a kid, Monkey D. Luffy vowed to become King of the Pirates and find the legen
 				Finished:    true,
 			},
 		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/one-piece-vol-2/eiichiro-oda/9781591160571",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://www.amazon.com/One-Piece-Vol-Buggy-Clown/dp/159116057X",
+			},
+		},
 	}
 	err = SaveBook(db, book5)
 	if err != nil {
@@ -259,6 +309,16 @@ Sure, lots of people say they want to be the King of the Pirates, but how many h
 				Message:     "Peak",
 				CurrentPage: 200,
 				Finished:    true,
+			},
+		},
+		BookBuyLinks: []models.BookBuyLink{
+			{
+				Retailer: "Waterstones",
+				URL:      "https://www.waterstones.com/book/one-piece-vol-3/eiichiro-oda/9781591161844",
+			},
+			{
+				Retailer: "Amazon",
+				URL:      "https://www.amazon.com/One-Piece-Vol-Fooled-Again/dp/1591161843",
 			},
 		},
 	}

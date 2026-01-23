@@ -10,11 +10,17 @@ type Book struct {
 	TotalPageCount  int              `json:"totalPageCount"`
 	Authors         []Author         `json:"authors"`
 	ReadingLogs     []ReadingLog     `json:"readingLogs"`
+	BookBuyLinks    []BookBuyLink    `json:"bookBuyLinks"`
 }
 
 type BookIdentifier struct {
 	Type  string `json:"type"`
 	Value string `json:"value"`
+}
+
+type BookBuyLink struct {
+	Retailer string `json:"retailer"`
+	URL      string `json:"url"`
 }
 
 type Series struct {

@@ -40,6 +40,7 @@ func main() {
 		"contains": strings.Contains,
 		"replace":  strings.Replace,
 		"truncate": helper.Truncate,
+		"linkify":  helper.Linkify,
 	}
 	renderer := &Template{
 		templates: template.Must(template.New("t").Funcs(funcMap).ParseGlob("views/*.html")),
