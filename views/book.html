@@ -42,15 +42,38 @@
                 </a>
                 {{ end }}
               </ul>
-              <div class="flex  flex-row gap-1 text-left">
-              {{ range .Book.BookBuyLinks }}
-                        {{ linkify . }}
-              {{ end }}
+              <div class="flex flex-row gap-1 text-left">
+                {{ range .Book.BookBuyLinks }} {{ linkify . }} {{ end }}
               </div>
             </div>
           </div>
         </div>
-        {{ .Book.ReadingLogs }}
+      </div>
+      <div class="w-full flex justify-center">
+        <ul
+          class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+          {{ range .Book.ReadingLogs }}
+          <li>
+            <div class="timeline-middle">
+              {{ if eq .Finished true }}
+              <span class="material-symbols-outlined"> check_circle </span>
+              {{ else }}
+              <span class="material-symbols-outlined"> circle </span>
+              {{ end }}
+            </div>
+            <div class="timeline-start mb-10 md:text-end">
+              <time class="font-mono italic">{{ formatDate .LogDate }}</time>
+              <div class="text-lg font-black">
+                Current Page: {{ .CurrentPage}}
+              </div>
+              <p>{{ .Message }}</p>
+            </div>
+            {{ if eq .Finished false}}
+            <hr />
+            {{ end }}
+          </li>
+          {{ end }}
+        </ul>
       </div>
     </div>
   </body>

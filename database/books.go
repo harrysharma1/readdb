@@ -51,13 +51,13 @@ Odin's Library Classics is dedicated to bringing the world the best of humankind
 		Authors:        []models.Author{author},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,
 			},
 			{
-				LogDate:     time.Time{}.Add(28 * time.Hour),
+				LogDate:     time.Now().Add(28 * time.Hour),
 				Message:     "Oh poor wretch",
 				CurrentPage: 128,
 				Finished:    false,
@@ -108,7 +108,7 @@ Brimming with political intrigue, The Last Man broaches partisan dysfunction, im
 		Authors:        []models.Author{author},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,
@@ -155,7 +155,7 @@ Brimming with political intrigue, The Last Man broaches partisan dysfunction, im
 		Authors:        []models.Author{author2},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,
@@ -203,7 +203,7 @@ As a child, Monkey D. Luffy was inspired to become a pirate by listening to the 
 		Authors:        []models.Author{author2},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,
@@ -251,7 +251,7 @@ As a kid, Monkey D. Luffy vowed to become King of the Pirates and find the legen
 		Authors:        []models.Author{author2},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,
@@ -299,7 +299,7 @@ Sure, lots of people say they want to be the King of the Pirates, but how many h
 		Authors:        []models.Author{author2},
 		ReadingLogs: []models.ReadingLog{
 			{
-				LogDate:     time.Time{},
+				LogDate:     time.Now(),
 				Message:     "Started reading",
 				CurrentPage: 1,
 				Finished:    false,

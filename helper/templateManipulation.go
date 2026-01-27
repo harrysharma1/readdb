@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"readdb/models"
 	"strings"
+	"time"
 )
 
 func Truncate(s string, limit int) string {
@@ -30,4 +31,8 @@ func Linkify(bookBuyLink models.BookBuyLink) string {
 	default:
 		return ""
 	}
+}
+
+func FormatDate(date time.Time) string {
+	return date.Format("02/01/2006")
 }

@@ -35,12 +35,13 @@ func main() {
 	// Template
 	e.Static("/static", "static")
 	funcMap := template.FuncMap{
-		"toUpper":  strings.ToUpper,
-		"join":     strings.Join,
-		"contains": strings.Contains,
-		"replace":  strings.Replace,
-		"truncate": helper.Truncate,
-		"linkify":  helper.Linkify,
+		"toUpper":    strings.ToUpper,
+		"join":       strings.Join,
+		"contains":   strings.Contains,
+		"replace":    strings.Replace,
+		"truncate":   helper.Truncate,
+		"linkify":    helper.Linkify,
+		"formatDate": helper.FormatDate,
 	}
 	renderer := &Template{
 		templates: template.Must(template.New("t").Funcs(funcMap).ParseGlob("views/*.html")),
