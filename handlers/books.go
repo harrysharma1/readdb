@@ -10,16 +10,27 @@ import (
 
 func GetBooksHandler(db *bolt.DB) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
-		books, err := database.GetAllBooks(db)
-		if err != nil {
-			return ctx.JSON(500, map[string]string{
-				"error": err.Error(),
-			})
-		}
-		if len(books) > 0 {
+		search := ctx.QueryParam("search")
+		if search != "" {
+			books, err := database.GetBookByQueryParams(db, search)
+			if err != nil {
+				return ctx.JSON(500, map[string]string{
+					"error": err.Error(),
+				})
+			}
 			return ctx.JSON(200, books)
+		} else {
+			books, err := database.GetAllBooks(db)
+			if err != nil {
+				return ctx.JSON(500, map[string]string{
+					"error": err.Error(),
+				})
+			}
+			if len(books) > 0 {
+				return ctx.JSON(200, books)
+			}
+			return ctx.JSON(200, "")
 		}
-		return ctx.JSON(200, "")
 	}
 }
 

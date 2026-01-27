@@ -53,7 +53,7 @@
         <ul
           class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
           {{ range .Book.ReadingLogs }}
-          <li>
+          <li class="select-none">
             <div class="timeline-middle">
               {{ if eq .Finished true }}
               <span class="material-symbols-outlined"> check_circle </span>

@@ -6,6 +6,7 @@ import (
 	"log"
 	"readdb/models"
 	"slices"
+	"strings"
 	"time"
 
 	bolt "go.etcd.io/bbolt"
@@ -366,6 +367,31 @@ func GetAllBooks(db *bolt.DB) ([]models.Book, error) {
 			books = append(books, book)
 			return nil
 		})
+
+	})
+	return books, err
+}
+
+func GetBookByQueryParams(db *bolt.DB, query string) ([]models.Book, error) {
+	var books []models.Book
+
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("books"))
+		if b == nil {
+			return errors.New("books does not exist")
+		}
+
+		return b.ForEach(func(k, v []byte) error {
+			var book models.Book
+			if err := json.Unmarshal(v, &book); err != nil {
+				return err
+			}
+			if strings.Contains(strings.ToLower(book.Name), strings.ToLower(query)) {
+				books = append(books, book)
+			}
+			return nil
+		})
+
 	})
 	return books, err
 }
