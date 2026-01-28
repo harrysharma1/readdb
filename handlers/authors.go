@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"readdb/database"
+	"readdb/models"
 	"strconv"
 
 	"github.com/labstack/echo/v4"
@@ -10,16 +11,27 @@ import (
 
 func GetAuthorsHandler(db *bolt.DB) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
-		authors, err := database.GetAllAuthors(db)
-		if err != nil {
-			return ctx.JSON(500, map[string]string{
-				"error": err.Error(),
-			})
-		}
-		if len(authors) > 0 {
+		search := ctx.QueryParam("search")
+		if search != "" {
+			authors, err := database.GetAuthorByQueryParam(db, search)
+			if err != nil {
+				return ctx.JSON(500, map[string]string{
+					"error": err.Error(),
+				})
+			}
 			return ctx.JSON(200, authors)
+		} else {
+			authors, err := database.GetAllAuthors(db)
+			if err != nil {
+				return ctx.JSON(500, map[string]string{
+					"error": err.Error(),
+				})
+			}
+			if len(authors) > 0 {
+				return ctx.JSON(200, authors)
+			}
+			return ctx.JSON(200, []models.Author{})
 		}
-		return ctx.JSON(200, "")
 	}
 }
 

@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"readdb/database"
+	"readdb/models"
 	"strconv"
 
 	"github.com/labstack/echo/v4"
@@ -29,7 +30,7 @@ func GetBooksHandler(db *bolt.DB) echo.HandlerFunc {
 			if len(books) > 0 {
 				return ctx.JSON(200, books)
 			}
-			return ctx.JSON(200, "")
+			return ctx.JSON(200, []models.Book{})
 		}
 	}
 }

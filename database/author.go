@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"readdb/models"
+	"strings"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -75,6 +76,29 @@ func GetAllAuthors(db *bolt.DB) ([]models.Author, error) {
 				return err
 			}
 			authors = append(authors, author)
+			return nil
+		})
+	})
+	return authors, err
+}
+
+func GetAuthorByQueryParam(db *bolt.DB, query string) ([]models.Author, error) {
+	var authors []models.Author
+
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("authors"))
+		if b == nil {
+			return errors.New("authors does not exist")
+		}
+
+		return b.ForEach(func(k, v []byte) error {
+			var author models.Author
+			if err := json.Unmarshal(v, &author); err != nil {
+				return err
+			}
+			if strings.Contains(strings.ToLower((author.Name)), strings.ToLower(query)) {
+				authors = append(authors, author)
+			}
 			return nil
 		})
 	})
