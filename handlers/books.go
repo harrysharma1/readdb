@@ -46,8 +46,13 @@ func GetBookByIdHandler(db *bolt.DB) echo.HandlerFunc {
 		if err != nil {
 			return ctx.String(404, "books not found")
 		}
+		series, err := database.GetAllBooksBySeriesID(db, uint(idInt))
+		if err != nil {
+			return ctx.String(404, "series not found")
+		}
 		return ctx.Render(200, "book", map[string]interface{}{
-			"Book": book,
+			"Book":   book,
+			"Series": series,
 		})
 
 	}

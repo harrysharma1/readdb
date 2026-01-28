@@ -24,8 +24,8 @@ type BookBuyLink struct {
 }
 
 type Series struct {
+	ID                 uint   `json:"id"`
 	PartOfASeries      bool   `json:"partOfASeries"`
 	Name               string `json:"name"`
-	VolumeNumber       int    `json:"volumeNumber"`
 	OtherBooksInSeries []Book `json:"otherBooksInSeries"`
 }

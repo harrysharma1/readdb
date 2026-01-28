@@ -75,6 +75,14 @@
           {{ end }}
         </ul>
       </div>
+      <div class="p-5 flex-col">
+        {{ range .Series }} {{ if eq .PartOfASeries true}}
+         <h2 class="text-xl">Part of</h2>
+        <a href="/series/{{ .ID }}" class="text-lg hover:underline"
+          >{{ .Name }}</a
+        >
+        {{ end }} {{ end }}
+      </div>
     </div>
   </body>
 </html>

@@ -18,6 +18,8 @@ func RegisterHandlers(e *echo.Echo, db *bolt.DB) {
 	e.GET("/authors/:id", GetAuthorByIdHandler(db))
 	//Lists
 	e.GET("/lists", GetListsHandler(db))
+	// Series
+	e.GET("/series/:id", GetSeriesByIdHandler(db))
 }
 
 func RootHandler(db *bolt.DB) echo.HandlerFunc {

@@ -28,7 +28,10 @@ func InitDB() (*bolt.DB, error) {
 			"authors",
 			"books",
 			"publishers",
-			"lists"}
+			"lists",
+			"series",
+		}
+
 		for _, bucket := range buckets {
 			_, err := tx.CreateBucketIfNotExists([]byte(bucket))
 			if err != nil {

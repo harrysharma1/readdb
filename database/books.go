@@ -438,3 +438,19 @@ func GetAllBooksByAuthorID(db *bolt.DB, authorId uint) ([]models.Book, error) {
 	})
 	return books, err
 }
+
+func GetAllBooksBySeriesID(db *bolt.DB, bookId uint) ([]models.Series, error) {
+
+	series, err := GetAllSeries(db)
+	if err != nil {
+		return series, err
+	}
+
+	series = slices.DeleteFunc(series, func(s models.Series) bool {
+		return slices.ContainsFunc(s.OtherBooksInSeries, func(b models.Book) bool {
+			return b.ID == bookId
+		})
+	})
+
+	return series, err
+}

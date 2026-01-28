@@ -1,0 +1,19 @@
+{{ define "series" }}
+<!doctype html>
+<html lang="en" data-theme="retro">
+  {{ template "head" .}}
+  <body>
+    <div class="flex flex-col gap-2">
+      {{ template "navbar" . }}
+      <div class="p-4">
+        <h1>{{ .Series.Name }}</h1>
+        <ul>
+            {{ range .Series.OtherBooksInSeries }}
+            <li><a href="/books/{{ .ID }}" class="btn btn-ghost">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+{{ end }}

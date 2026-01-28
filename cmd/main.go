@@ -29,6 +29,7 @@ func main() {
 	database.SeedAuthor(db)
 	database.SeedBook(db)
 	database.SeedList(db)
+	database.SeedSeries(db)
 	// Router
 	e := echo.New()
 	handlers.RegisterHandlers(e, db)
