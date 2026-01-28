@@ -373,7 +373,7 @@ func GetAllBooks(db *bolt.DB) ([]models.Book, error) {
 }
 
 func GetBookByQueryParams(db *bolt.DB, query string) ([]models.Book, error) {
-	var books []models.Book
+	books := make([]models.Book, 0)
 
 	err := db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte("books"))

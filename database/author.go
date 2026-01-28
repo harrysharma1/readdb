@@ -83,7 +83,7 @@ func GetAllAuthors(db *bolt.DB) ([]models.Author, error) {
 }
 
 func GetAuthorByQueryParam(db *bolt.DB, query string) ([]models.Author, error) {
-	var authors []models.Author
+	authors := make([]models.Author, 0)
 
 	err := db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte("authors"))

@@ -57,9 +57,9 @@ function renderCard(item) {
           <img class="size-10 rounded-box" src="${item.profileImage}" />
         </div>
         <div>
-          <div>${authors}</div>
+          <div>${item.name}</div>
           <div class="text-xs uppercase font-semibold opacity-60">
-            ${item.name}
+            ${authors}
           </div>
           <span class="badge badge-info badge-sm mt-1">Book</span>
         </div>
